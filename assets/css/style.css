@@ -1082,7 +1082,7 @@ input[type="email"] {
 #footer {
   padding-bottom: 60px;
   position: relative;
-  background: url("../img/bg/2.png");
+  /* background: url("./img/bg/2.png"); */
   border-top: 1px solid#eee;
 }
 

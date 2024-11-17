@@ -1,4 +1,9 @@
 <section id="footer" class="section-padding">
+  <style>
+  #footer {
+    background: url("<?php echo get_template_directory_uri();?>/assets/img/bg/2.png");
+  }
+  </style>
   <div class="container">
     <div class="row">
       <div class="col-lg-5 col-sm-8 col-md-8">
@@ -11,14 +16,26 @@
       <div class="col-lg-2 col-sm-4 col-md-4">
         <div class="footer-widget footer-link">
           <h4>About</h4>
-          <ul>
+          <!-- <ul>
             <li><a href="#">About</a></li>
             <li><a href="#">Service</a></li>
             <li><a href="#">Pricing</a></li>
             <li><a href="#">Team</a></li>
             <li><a href="#">Testimonials</a></li>
             <li><a href="#">Blog</a></li>
-          </ul>
+          </ul> -->
+          <?php wp_nav_menu( [
+          'theme_location'  => '',
+          'menu'            => 'footer',
+          'container'       => false,
+          'menu_class'      => '',
+          'menu_id'         => false,
+          'echo'            => true,
+          'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+          'depth'           => 3,
+          'walker'          => new bootstrap_4_walker_nav_menu(),
+         ] );
+       ?>
         </div>
       </div>
 
