@@ -1,5 +1,6 @@
 <?php
 add_theme_support( 'custom-logo');
+add_theme_support( 'post-thumbnails', array( 'post' ) );
 // CSS va JavaScript fayllarni yuklash funksiyasi
 function custom_theme_assets() {
     // WordPress jQuery-ni deregister qilish
