@@ -28,7 +28,46 @@ Template Post Type:page
     <div class="row">
       <div class="col-lg-8">
         <div class="row">
-          <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+          <?php $count = 0;
+           if ( have_posts() ) : while ( have_posts() ) : the_post();
+           $count++;
+           switch($count){
+            case "3":
+              ?>
+          <div class="col-lg-12">
+            <div class="blog-post">
+              <?php
+              //должно находится внутри цикла
+              if( has_post_thumbnail() ) {
+                the_post_thumbnail( "medium", array(
+                  'class' => "img-fluid w-100",
+                ) );
+              }
+              else {
+                echo '<img class="img-fluid w-100" src="'.get_template_directory_uri().'/assets/img/default.jpg" />';
+              }
+              ?>
+
+              <div class="mt-4 mb-3 d-flex">
+                <div class="post-author mr-3">
+                  <i class="fa fa-user"></i>
+                  <span class="h6 text-uppercase"><?php the_author(); ?></span>
+                </div>
+
+                <div class="post-info">
+                  <i class="fa fa-calendar-check"></i>
+                  <span><?php the_time('j M Y'); ?></span>
+                </div>
+              </div>
+              <a href="<?php echo get_the_permalink();?>" class="h4 "><?php the_title();?></a>
+              <p class="mt-3"><?php the_excerpt();?></p>
+              <a href="<?php echo get_the_permalink();?>" class="read-more">Read More <i
+                  class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+          <?php break;
+          default:
+           ?>
           <div class="col-lg-6">
             <div class="blog-post">
               <?php
@@ -60,7 +99,7 @@ Template Post Type:page
                   class="fa fa-angle-right"></i></a>
             </div>
           </div>
-          <?php endwhile; else: ?>
+          <?php break;} endwhile; else: ?>
           Записей нет.
           <?php endif; ?>
         </div>
